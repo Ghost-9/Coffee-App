@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           unselectedItemColor: Colors.white.withOpacity(0.5),
         ),
       ),
-      home: const HomePage(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
