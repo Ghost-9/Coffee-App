@@ -3,103 +3,181 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CoffeeTile extends StatelessWidget {
   final String imagePath;
-
+  final String coffeeName;
+  final String coffeeIngredients;
   final String coffeePrice;
-  final String coffeeIngedrients;
-  const CoffeeTile(
-      {Key? key,
-      required this.imagePath,
-      required this.coffeeIngedrients,
-      required this.coffeePrice})
-      : super(key: key);
+  final String rating;
+  final VoidCallback? onAddTap;
+  final VoidCallback? onTap;
+
+  const CoffeeTile({
+    super.key,
+    required this.imagePath,
+    this.coffeeName = 'Cappuccino',
+    required this.coffeeIngredients,
+    required this.coffeePrice,
+    this.rating = '4.8',
+    this.onAddTap,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 25),
-      height: 280,
-      width: 180,
-      decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-            height: 150,
-            width: 160,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  blurRadius: 1,
-                  spreadRadius: 1,
-                  offset: const Offset(0, 2),
-                )
-              ],
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Image(
-                filterQuality: FilterQuality.none,
-                fit: BoxFit.cover,
-                image: AssetImage(imagePath),
-              ),
-            ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(left: 20),
+        width: 170,
+        decoration: BoxDecoration(
+          color: const Color(0xFF141921),
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: Colors.white.withValues(alpha: 0.05),
+            width: 1,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-            child: RichText(
-              text: TextSpan(
-                text: 'Cappuccino\n',
-                style: GoogleFonts.bebasNeue(
-                  fontSize: 24,
-                ),
-                children: <TextSpan>[
-                  TextSpan(
-                      text: coffeeIngedrients,
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 12, fontWeight: FontWeight.w200)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.25),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Image Container with Rating Overlay
+              Stack(
+                children: [
+                  Container(
+                    height: 145,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(18.0),
+                      child: Image.asset(
+                        imagePath,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 8,
+                    right: 8,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.65),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.star_rounded,
+                              size: 14, color: Color(0xFFD17842)),
+                          const SizedBox(width: 3),
+                          Text(
+                            rating,
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    text: '\$',
-                    style: GoogleFonts.bebasNeue(
-                        fontSize: 26, color: Colors.orange),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: ' $coffeePrice',
+              const SizedBox(height: 10),
+
+              // Title & Ingredients
+              Text(
+                coffeeName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.plusJakartaSans(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                coffeeIngredients,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.plusJakartaSans(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white.withValues(alpha: 0.5),
+                ),
+              ),
+              const Spacer(),
+
+              // Price & Add Button
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        r'$',
                         style: GoogleFonts.bebasNeue(
-                          fontSize: 26,
+                          fontSize: 18,
+                          color: const Color(0xFFD17842),
+                        ),
+                      ),
+                      const SizedBox(width: 2),
+                      Text(
+                        coffeePrice,
+                        style: GoogleFonts.plusJakartaSans(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
                           color: Colors.white,
                         ),
                       ),
                     ],
                   ),
-                ),
-                Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.orange),
-                    child: const Center(child: Icon(Icons.add))),
-              ],
-            ),
+                  GestureDetector(
+                    onTap: onAddTap,
+                    child: Container(
+                      height: 34,
+                      width: 34,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFFD17842), Color(0xFFB55D28)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFFD17842).withValues(alpha: 0.35),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Icon(Icons.add, size: 20, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
