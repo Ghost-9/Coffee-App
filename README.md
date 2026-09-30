@@ -28,17 +28,13 @@
 <div align="center">
   <table>
     <tr>
-      <td align="center" width="33%">
-        <strong>Curated Coffee Roasts</strong><br /><br />
-        <img src="https://user-images.githubusercontent.com/53341343/163552340-1eb989c8-9388-4405-94c5-d0d2d2868386.jpeg" width="280" alt="Storefront View" />
+      <td align="center" width="50%">
+        <strong>OLED Dark Roast Catalog (iOS Simulator Retina)</strong><br /><br />
+        <img src="docs/screenshots/coffee_catalog.png" width="340" alt="Artisan Coffee Roasts Catalog" />
       </td>
-      <td align="center" width="33%">
-        <strong>Artisan Pour & Ingredients</strong><br /><br />
-        <img src="https://user-images.githubusercontent.com/53341343/163552770-634456ad-cbd9-4b67-8c99-e3098637b4a8.PNG" width="280" alt="Item Detail View" />
-      </td>
-      <td align="center" width="33%">
-        <strong>Bag & Order Summary</strong><br /><br />
-        <img src="https://user-images.githubusercontent.com/53341343/163552305-d49d8190-94c6-4e0a-a070-c31f3b6e8949.PNG" width="280" alt="Cart Selection View" />
+      <td align="center" width="50%">
+        <strong>Realtime Filter & Search (iOS Simulator Retina)</strong><br /><br />
+        <img src="docs/screenshots/coffee_search.png" width="340" alt="Realtime Search & Category Filter" />
       </td>
     </tr>
   </table>
