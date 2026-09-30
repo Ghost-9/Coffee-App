@@ -7,26 +7,36 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Artisan Coffee Roasters',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
-        canvasColor: Colors.black,
+        useMaterial3: true,
         brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFF0C0F14),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFFD17842),
+          secondary: Color(0xFFD17842),
+          surface: Color(0xFF141921),
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF0C0F14),
+          elevation: 0,
+          scrolledUnderElevation: 0,
+        ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedIconTheme: const IconThemeData(color: Colors.orange),
-          unselectedIconTheme:
-              IconThemeData(color: Colors.white.withOpacity(0.5)),
-          selectedItemColor: Colors.amber,
-          unselectedItemColor: Colors.white.withOpacity(0.5),
+          backgroundColor: const Color(0xFF0C0F14),
+          selectedItemColor: const Color(0xFFD17842),
+          unselectedItemColor: Colors.white.withValues(alpha: 0.35),
+          type: BottomNavigationBarType.fixed,
+          elevation: 0,
         ),
       ),
-      home: HomePage(),
-      debugShowCheckedModeBanner: false,
+      home: const HomePage(),
     );
   }
 }
