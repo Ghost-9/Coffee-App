@@ -1,40 +1,26 @@
-# Artisan Coffee · Specialty Roasters Mobile App
+# Artisan Coffee
 
-<p align="center">
-  <strong>An OLED-optimized, artisan coffee ordering mobile experience built with Flutter & Material 3.</strong><br />
-  <em>Featuring fluid category switching, real-time roast searching, tactile card physics, and deep obsidian aesthetics.</em>
-</p>
+A Flutter mobile application for browsing and ordering specialty roast coffees, featuring a refined dark theme, realtime search filtering, and animated category selection.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white" alt="Flutter 3.x" />
-  <img src="https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart&logoColor=white" alt="Dart 3.x" />
-  <img src="https://img.shields.io/badge/Design-Dark_Mode_OLED-orange" alt="Dark Mode" />
-  <img src="https://img.shields.io/badge/Platform-iOS_%7C_Android_%7C_Web-black" alt="Platforms" />
-  <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT" />
-</p>
-
-<p align="center">
-  <a href="#visual-walkthrough">Visual Walkthrough</a> •
-  <a href="#ui-ux-craftsmanship">UI/UX Craftsmanship</a> •
-  <a href="#project-architecture">Project Architecture</a> •
-  <a href="#getting-started">Getting Started</a> •
-  <a href="#license">License</a>
-</p>
+[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white)](https://flutter.dev/)
+[![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart&logoColor=white)](https://dart.dev/)
+[![Platform](https://img.shields.io/badge/Platform-iOS_%7C_Android-black)](https://flutter.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
 
-## Visual Walkthrough
+## Screenshots
 
 <div align="center">
   <table>
     <tr>
       <td align="center" width="50%">
-        <strong>OLED Dark Roast Catalog (iOS Simulator Retina)</strong><br /><br />
-        <img src="docs/screenshots/coffee_catalog.png" width="340" alt="Artisan Coffee Roasts Catalog" />
+        <strong>Product Catalog</strong><br /><br />
+        <img src="docs/screenshots/catalog.png" width="340" alt="Product Catalog" />
       </td>
       <td align="center" width="50%">
-        <strong>Realtime Filter & Search (iOS Simulator Retina)</strong><br /><br />
-        <img src="docs/screenshots/coffee_search.png" width="340" alt="Realtime Search & Category Filter" />
+        <strong>Search & Filter</strong><br /><br />
+        <img src="docs/screenshots/search.png" width="340" alt="Search and filter view" />
       </td>
     </tr>
   </table>
@@ -42,25 +28,28 @@
 
 ---
 
-## UI/UX Craftsmanship
+## Features
 
-* **OLED-Tuned Contrast:** Pure obsidian dark backgrounds (`#0C0F14`) accented by rich caramel copper (`#D17842`) and warm golden creams.
-* **Interactive Roast Filters:** Smooth one-tap category navigation (Cappuccino, Espresso, Latte, Flat White, Mocha) with dynamic indicator markers.
-* **Live Search Querying:** Instant filtering across coffee blends, origin notes, and dairy/plant-based milk preparations.
-* **Tactile Micro-Feedback:** Floating contextual confirmation pills upon adding items to the ordering queue.
-* **Bezel-Aware Responsive Layout:** Optimized padding and `SafeArea` boundaries tested across compact and Pro Max mobile viewports.
+* **Dark Theme UI:** Deep obsidian backgrounds (`#0C0F14`) with amber/caramel accents (`#D17842`) and high-contrast typography via Google Fonts (Rosarivo).
+* **Live Search & Category Filtering:** Instant client-side filtering across coffee varieties (Cappuccino, Espresso, Latte, Flat White) and tasting notes.
+* **Cart Interactions:** Animated item additions with non-intrusive feedback notifications.
+* **Modern Flutter & Dart 3 Support:** Fully compatible with Dart 3.x, zero deprecated API calls, and clean analyzer output.
+* **Widget Test Suite:** Unit and widget test coverage for catalog rendering, search querying, and category toggles.
 
 ---
 
-## Project Architecture
+## Project Structure
 
 ```
 lib/
-├── main.dart              # Application entry point & Material 3 Dark theme setup
-├── screens/
-│   └── homepage.dart      # Interactive catalog, search, category pills & banner
-└── widgets/
-    └── coffee_tile.dart   # Polished product card with rating chip & cart trigger
+├── main.dart             # Application root, theme configurations
+├── colors.dart           # Color palette constants
+├── data.dart             # Coffee roast data models & mock database
+└── ...
+test/
+└── widget_test.dart      # Widget tests for catalog and search logic
+docs/
+└── screenshots/          # Application screenshots
 ```
 
 ---
@@ -68,32 +57,34 @@ lib/
 ## Getting Started
 
 ### Prerequisites
-* Flutter SDK (3.x or higher)
-* Dart SDK (3.x or higher)
+* Flutter SDK (3.24+ recommended)
+* Xcode (for iOS) or Android Studio (for Android)
 
 ### Installation & Run
 
-```bash
-# Clone the repository
-git clone https://github.com/Ghost-9/Coffee-App.git
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Ghost-9/Coffee-App.git
+   cd Coffee-App
+   ```
 
-# Enter project directory
-cd Coffee-App
+2. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
 
-# Fetch dependencies
-flutter pub get
+3. Run test suite:
+   ```bash
+   flutter test
+   ```
 
-# Run test suite
-flutter test
-
-# Launch on device or simulator
-flutter run
-```
+4. Launch the application:
+   ```bash
+   flutter run
+   ```
 
 ---
 
-## Design Credits & License
+## License
 
-* Design concept reference by [Fahad Bin Omar (Dribbble)](https://dribbble.com/shots/15475209-Coffee-Shop-Mobile-Apps-Dark-Mode).
-* Implemented and maintained with Flutter 3.x by [Mayank Batra](https://github.com/Ghost-9).
-* Licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
